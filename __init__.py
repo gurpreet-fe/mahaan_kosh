@@ -46,11 +46,11 @@ for _, c in enumerate(os.listdir(OUTPUT)):
         for _, ggc in enumerate(os.listdir(f"{OUTPUT}/{c}/{gc}")):
             image_path = os.path.join(OUTPUT, f"{c}/{gc}/{ggc}")
 
-            print(f"Appending text of {ggc}")
+            print(f"Appending text of {c} {ggc}")
             text += pytesseract.image_to_string(Image.open(image_path), lang="pan")
 
         print(f'Writing text of akhar "{gc}" to akhar_{gc}.txt')
-        with open(f"{OUTPUT}/{c}" + f"akhar_{gc}.txt", "w") as file:
+        with open(f"{OUTPUT}/{c}/{gc}/akhar_{gc}.txt", "w") as file:
             file.write(text)
 
 print("Done!")
